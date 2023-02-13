@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyFormatter", "LazyFormatter\LazyFormatter.csproj", "{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyFormatterTest", "LazyFormatterTest\LazyFormatterTest.csproj", "{83943AD9-A64F-455E-BC57-A4712867C569}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83943AD9-A64F-455E-BC57-A4712867C569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83943AD9-A64F-455E-BC57-A4712867C569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83943AD9-A64F-455E-BC57-A4712867C569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83943AD9-A64F-455E-BC57-A4712867C569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
