@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WMA
 {
-  public static class Utf8StreamWriter
+  internal static class Utf8StreamWriter
   {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Write<T>(T? value, Stream target, Encoding encoding)

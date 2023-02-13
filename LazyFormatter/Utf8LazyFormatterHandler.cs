@@ -3,7 +3,7 @@ using System.Text;
 
 namespace WMA
 {
-  public struct Utf8LazyFormatterHandler
+  internal struct Utf8LazyFormatterHandler
   {
     private readonly List<(int placeholderIndex, int beginIndex, int endIndex)> indexes;
     private readonly byte[] utf8Content;
