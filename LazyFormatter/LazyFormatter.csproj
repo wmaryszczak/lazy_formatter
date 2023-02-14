@@ -1,13 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net6;net7</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>WMA</RootNamespace>
+    <PackageId>LazyFormatter</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>wma</Authors>
+    <Product>LazyFormatter</Product>
+    <Description>Nearly zero allocaton string interpolation which allow to declare string pattern once, but format to target stream many times</Description>
+    <PackageProjectUrl>https://github.com/wmaryszczak/lazy_formatter</PackageProjectUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <LangVersion>latest</LangVersion>
+    <PackageTags>interpolation, optimied, lazy</PackageTags>
+    <Version>1.0.0</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>WMA</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="DotNext" Version="4.9.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
 </Project>
