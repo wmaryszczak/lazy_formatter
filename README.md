@@ -10,6 +10,10 @@ The `LazyFormatter` has the following features:
 
 ## How to use it
 
+Include the nuget package in the project
+
+`https://www.nuget.org/packages/LazyFormatter/1.0.0`
+
 Declare once as singleton or static variable:
 
 ```
