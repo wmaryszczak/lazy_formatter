@@ -1,8 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyFormatter", "LazyFormatter\LazyFormatter.csproj", "{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyFormatter", "LazyFormatter\LazyFormatter.csproj", "{41D3D778-391D-475B-9A74-6AC3C5DB6BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyFormatterTest", "LazyFormatterTest\LazyFormatterTest.csproj", "{83943AD9-A64F-455E-BC57-A4712867C569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyFormatterTest", "LazyFormatterTest\LazyFormatterTest.csproj", "{83943AD9-A64F-455E-BC57-A4712867C569}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72626DA6-DDAD-450D-99B6-DDD9FCDE3794}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +26,11 @@ Global
 		{83943AD9-A64F-455E-BC57-A4712867C569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83943AD9-A64F-455E-BC57-A4712867C569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83943AD9-A64F-455E-BC57-A4712867C569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F80EAB9E-FD7F-42CB-9FD7-BDBD9D0E847C}
 	EndGlobalSection
 EndGlobal

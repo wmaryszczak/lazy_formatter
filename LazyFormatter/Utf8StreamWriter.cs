@@ -1,4 +1,4 @@
-using System.Buffers;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,22 +8,21 @@ namespace WMA
   internal static class Utf8StreamWriter
   {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Write<T>(T? value, Stream target, Encoding encoding)
+    public static void Write<T>(T value, Stream target, Encoding encoding)
     {
-      if (value == null)
-      {
-        throw new ArgumentNullException(nameof(value));
-      }
-      var maxLenght = CalculateLenght(value, out var isString);
+      ArgumentNullException.ThrowIfNull(value);
+
+      string? stringVal = null;
+      var maxLenght = TryCalculateLength<T>(out int? length) ? length.Value : (stringVal = value.ToString()!).Length;
       var bytesMax = encoding.GetMaxByteCount(maxLenght);
       if(bytesMax < 1024)
       {
         Span<char> charBuffer = stackalloc char[maxLenght];
         Span<byte> byteBuffer = stackalloc byte[bytesMax];
         var bytesWritten = 0;
-        if(isString)
+        if(stringVal is not null)
         {
-          bytesWritten = encoding.GetBytes(value.ToString().AsSpan(), byteBuffer);
+          bytesWritten = encoding.GetBytes(stringVal, byteBuffer);
         }
         else if (value is ISpanFormattable sf && sf.TryFormat(charBuffer, out var charsWritten, Span<char>.Empty, CultureInfo.InvariantCulture) && charsWritten > 0)
         {
@@ -41,35 +40,35 @@ namespace WMA
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static int CalculateLenght<T>(T? value, out bool isString)
+    private static bool TryCalculateLength<T>([NotNullWhen(true)] out int? length)
     {
-      isString = false;
-      if(value == null)
+      if(typeof(T) == typeof(int) || typeof(T) == typeof(long) || typeof(T) == typeof(double))
       {
-        throw new ArgumentNullException(nameof(value));
+        length = 20;
+        return true;
       }
-      if(value is int || value is long || value is double)
+      else if(typeof(T) == typeof(decimal))
       {
-        return 20;
+        length = 30;
+        return true;
       }
-      else if(value is decimal)
+      else if (typeof(T) == typeof(float))
       {
-        return 30;
+        length = 10;
+        return true;
       }
-      else if (value is float)
+      else if (typeof(T) == typeof(bool))
       {
-        return 10;
+        length = 5;
+        return true;
       }
-      else if (value is bool)
+      else if(typeof(T) == typeof(char))
       {
-        return 5;
+        length = 1;
+        return true;
       }
-      else if(value is char)
-      {
-        return 1;
-      }
-      isString = true;
-      return value.ToString()!.Length;
+      length = null;
+      return false;
     }
   }
 }

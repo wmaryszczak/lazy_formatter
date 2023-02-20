@@ -1,18 +1,19 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace WMA
 {
-  internal struct Utf8LazyFormatterHandler
+  internal readonly struct Utf8LazyFormatterHandler
   {
-    private readonly List<(int placeholderIndex, int beginIndex, int endIndex)> indexes;
+    private readonly (int placeholderIndex, int beginIndex, int endIndex)[] indexes;
     private readonly byte[] utf8Content;
     private readonly Stream utf8TargetStream;
     private readonly Encoding enncoding;
     private readonly List<Action<Stream, Encoding>> formatFunctions;
 
     public Utf8LazyFormatterHandler(
-      List<(int placeholderIndex, int beginIndex, int endIndex)> indexes,
+      (int placeholderIndex, int beginIndex, int endIndex)[] indexes,
       byte[] utf8Content,
       Stream utfTarget8Stream,
       Encoding enncoding
@@ -22,7 +23,7 @@ namespace WMA
       this.utf8Content = utf8Content;
       this.utf8TargetStream = utfTarget8Stream;
       this.enncoding = enncoding;
-      this.formatFunctions = new(indexes.Count);
+      this.formatFunctions = new(indexes.Length);
     }
 
     public void AssignValue<T>(T val, int index)
@@ -36,7 +37,7 @@ namespace WMA
     public void FormatAll()
     {
       var currentContentIdx = 0;
-      for (int i = 0; i < this.indexes.Count; i++)
+      for (int i = 0; i < this.indexes.Length; i++)
       {
         var placeholder = this.indexes[i];
         if (!GetFormatFunction(placeholder.placeholderIndex, out var formatFunction))
@@ -57,14 +58,18 @@ namespace WMA
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool GetFormatFunction(int placeholderIndex, out Action<Stream, Encoding> formatFunction)
+    private bool GetFormatFunction(int placeholderIndex, [NotNullWhen(true)] out Action<Stream, Encoding>? formatFunction)
     {
-      formatFunction = null!;
       if (placeholderIndex != -1 && placeholderIndex < this.formatFunctions.Count)
       {
         formatFunction = this.formatFunctions[placeholderIndex];
+        return true;
       }
-      return formatFunction != null;
+      else
+      {
+        formatFunction = null;
+        return false;
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ namespace WMA;
 
 public class Utf8LazyFormatter
 {
-  private readonly List<(int placeholderIndex, int beginIndex, int endIndex)> indexes;
+  private readonly (int placeholderIndex, int beginIndex, int endIndex)[] indexes;
   private readonly byte[] utf8Content;
   private readonly byte patternStart;
   private readonly byte patternEnd;
@@ -27,7 +27,7 @@ public class Utf8LazyFormatter
     this.indexes = ScanContentForPlaceholders(utf8Content);
   }
 
-  private List<(int, int, int)> ScanContentForPlaceholders(byte[] utf8Content)
+  private (int, int, int)[] ScanContentForPlaceholders(byte[] utf8Content)
   {
     var indexes = new List<(int, int, int)> { };
     int idx1 = 0;
@@ -60,17 +60,17 @@ public class Utf8LazyFormatter
       }
     }
 
-    return indexes;
+    return indexes.ToArray();
   }
 
-  public void Format<T1, T2, T3>(Stream target, T1 val1)
+  public void Format<T1>(Stream target, T1 val1)
   {
     var formatter = new Utf8LazyFormatterHandler(this.indexes, this.utf8Content, target, this.enncoding);
     formatter.AssignValue(val1, 0);
     formatter.FormatAll();
   }
 
-  public void Format<T1, T2, T3>(Stream target, T1 val1, T2 val2)
+  public void Format<T1, T2>(Stream target, T1 val1, T2 val2)
   {
     var formatter = new Utf8LazyFormatterHandler(this.indexes, this.utf8Content, target, this.enncoding);
     formatter.AssignValue(val1, 0);
@@ -94,6 +94,16 @@ public class Utf8LazyFormatter
     formatter.AssignValue(val2, 1);
     formatter.AssignValue(val3, 2);
     formatter.AssignValue(val4, 3);
+    formatter.FormatAll();
+  }
+
+  public void Format(Stream target, ReadOnlySpan<object> values)
+  {
+    var formatter = new Utf8LazyFormatterHandler(this.indexes, this.utf8Content, target, this.enncoding);
+    for (int i = 0; i < values.Length; i++)
+    {
+      formatter.AssignValue(values[i], i);
+    }
     formatter.FormatAll();
   }
 
