@@ -12,7 +12,7 @@ The `LazyFormatter` has the following features:
 
 Include the nuget package in the project
 
-`https://www.nuget.org/packages/LazyFormatter/1.0.0`
+`https://www.nuget.org/packages/LazyFormatter`
 
 Declare once as singleton or static variable:
 
