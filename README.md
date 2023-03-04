@@ -39,12 +39,17 @@ Use multiple times with variables provided as input to format method
   }
 ```
 
-## Benchmark tests
+## Benchmarks
 
 To run locally use
 ```bash
 cd LazyFormatterTest && dotnet run -c Release
 ```
+
+| Method                       |     Mean |    Error |   StdDev | Ratio | RatioSD |   Gen0 |   Gen1 | Allocated | Alloc Ratio |
+|------------------------------|---------:|---------:|---------:|------:|--------:|-------:|-------:|----------:|------------:|
+| Benchmark_Formatter          | 352.5 ns | 150.7 ns |  8.26 ns |  1.00 |    0.00 | 0.0787 |      - |     496 B |        1.00 |
+| Benchmrk_StringInterpolation | 465.7 ns | 915.2 ns | 50.17 ns |  1.32 |    0.12 | 0.6332 | 0.0086 |    3976 B |        8.02 |
 
 There is also set-up continuous benchmarking as GitHub action.
 The results are available [here](https://wmaryszczak.github.io/lazy_formatter/dev/bench/).
