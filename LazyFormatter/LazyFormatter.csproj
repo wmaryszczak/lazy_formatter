@@ -8,12 +8,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>wma</Authors>
     <Product>LazyFormatter</Product>
-    <Description>Nearly zero allocaton string interpolation which allow to declare string pattern once, but format to target stream many times</Description>
+    <Description>Nearly zero allocation string interpolation which allow to declare string pattern once, but format to target stream many times</Description>
     <PackageProjectUrl>https://github.com/wmaryszczak/lazy_formatter</PackageProjectUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <LangVersion>latest</LangVersion>
-    <PackageTags>interpolation, optimied, lazy</PackageTags>
+    <PackageTags>interpolation, optimized, lazy</PackageTags>
     <Version>1.0.1</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
