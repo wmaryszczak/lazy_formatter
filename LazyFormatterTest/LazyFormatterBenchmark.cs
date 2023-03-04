@@ -91,7 +91,7 @@ namespace LazyFormatterTest
     }
 
     [Benchmark()]
-    public string Benchmrk_StringInterpolation()
+    public string Benchmark_StringInterpolation()
     {
       var idNumber = 555667777;
       var idIssuer = "SSA";
