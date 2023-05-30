@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LazyFormatter\LazyFormatter.csproj" />
+    <ProjectReference Include="../LazyFormatter/LazyFormatter.csproj" />
   </ItemGroup>
 
 </Project>
